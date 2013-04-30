@@ -10,7 +10,15 @@ class AppDelegate
     @window .makeKeyAndVisible
 
     controller = TapController.alloc.initWithNibName(nil, bundle: nil)
-    @window .rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
+    nav_controller =  UINavigationController.alloc.initWithRootViewController(controller)
+
+    other_controller = UIViewController.alloc.initWithNibName(nil, bundle: nil)
+    other_controller.title = "Other"
+    other_controller.view.backgroundColor = UIColor.purpleColor
+
+    tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    tab_controller.viewControllers = [nav_controller, other_controller]
+    @window .rootViewController = tab_controller
 
     # @blue_view = UIView.alloc.initWithFrame(CGRectMake(10, 10, 100, 100))
     # @blue_view .backgroundColor = UIColor.blueColor
